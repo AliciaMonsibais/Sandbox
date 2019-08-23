@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Geekdom Coding Challenge</title>
+</head>
+<body>
+
+<script>
+
+    /*TO DO: Write a function that takes a string and returns true if all of the characters are the same case, false otherwise*/
+    function isAllCase(str) {
+        if (str === str.toUpperCase()) {
+            return true;
+        } else if (str === str.toLowerCase()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    console.log(isAllCase("HELLO WORLD"));
+    console.log(isAllCase("hello world"));
+    console.log(isAllCase("hEllO WorLd"));
+
+    /* Write a function that takes an array of integers and returns an array of integers where each number is the sum of itself and all of the previous numbers in the array.*/
+
+    function isSum(array){
+        newArr = [];
+        num = 0;
+        array.forEach(function(e){
+            newArr.push(e + num);
+            num += e;
+        });
+        return newArr;
+    }
+
+    console.log(isSum([1,1,1]));
+    console.log(isSum([4,2,1,3,5]));
+
+    /* An Isogram is a word that has no repeating letters, consecutive or not. Write a function that takes a string and returns true if it's an isogram and false if it isn't.*/
+
+    function isIsogram(str) {
+        if (typeof str === undefined){
+            return true;
+        }
+        var passing = true;
+        var str2 = str.toLowerCase();
+        var counts = {};
+        for (i = 0; i <= str2.length; i++) {
+            var letter = str2.charAt(i);
+            if(counts[letter]) {
+                counts[letter] = 1 + counts[letter]
+            } else {
+                counts[letter] = 1
+            }
+            if(counts[letter] > 1) {
+                return passing = false
+            }
+        }
+        return passing;
+    }
+    console.log(isIsogram("fish"));
+    console.log(isIsogram("food"));
+    console.log(isIsogram("color"));
+
+    /* Write a function that takes a phone number with letters  in it and converts it to one with only numbers. All input phone numbers will follow this pattern "###-###-####"*/
+
+    function convertPhoneLetters(input) {
+
+        var inputlength = input.length;
+        input = input.toLowerCase();
+        var phonenumber = "";
+        for (i = 0; i < inputlength; i++) {
+            var character = input.charAt(i);
+
+
+            switch(character) {
+
+                case '0': phonenumber+="0";
+                    break;
+                case '1': phonenumber+="1";
+                    break;
+                case '2': phonenumber+="2";
+                    break;
+                case '3': phonenumber+="3";
+                    break;
+                case '4': phonenumber+="4";
+                    break;
+                case '5': phonenumber+="5";
+                    break;
+                case '6': phonenumber+="6";
+                    break;
+                case '7': phonenumber+="7";
+                    break;
+                case '8': phonenumber+="8";
+                    break;
+                case '9': phonenumber+="9";
+                    break;
+
+                case 'a': case 'b': case 'c': phonenumber+="2";
+                    break;
+                case 'd': case 'e': case 'f': phonenumber+="3";
+                    break;
+                case 'g': case 'h': case 'i': phonenumber+="4";
+                    break;
+                case 'j': case 'k': case 'l': phonenumber+="5";
+                    break;
+                case 'm': case 'n': case 'o': phonenumber+="6";
+                    break;
+                case 'p': case 'q': case 'r': case 's': phonenumber+="7";break;
+                case 't': case 'u': case 'v': phonenumber+="8";
+                    break;
+                case 'w': case 'x': case 'y': case 'z': phonenumber+="9"
+                    break;
+
+                default: phonenumber+=character;
+
+            }
+        }
+
+        return phonenumber;
+    }
+
+    console.log(convertPhoneLetters("210-367-CODE"));
+    console.log(convertPhoneLetters("TRY-THE-FOOD"));
+
+    /* Write a function that returns all possible partitions of an array from left to right. With an n amount of elements in the input the returned array should have n-1 subarrays. An empty array should return an empty array.*/
+
+    //did not complete
+    function isPartition(arr, filter) {
+        return arr.reduce(
+            (r, e, i, a) => {
+                r[filter(e, i, a) ? 0 : 1].push(e);
+                return r;
+            }, [[], []]);
+    }
+    console.log(isPartition([1, 5, 3, 2]));
+
+</script>
+</body>
+</html>
