@@ -43,11 +43,11 @@
         if (typeof str === undefined){
             return true;
         }
-        var passing = true;
-        var str2 = str.toLowerCase();
-        var counts = {};
+        let passing = true;
+        let str2 = str.toLowerCase();
+        let counts = {};
         for (i = 0; i <= str2.length; i++) {
-            var letter = str2.charAt(i);
+            let letter = str2.charAt(i);
             if(counts[letter]) {
                 counts[letter] = 1 + counts[letter]
             } else {
@@ -67,11 +67,11 @@
 
     function convertPhoneLetters(input) {
 
-        var inputlength = input.length;
+        let inputlength = input.length;
         input = input.toLowerCase();
-        var phonenumber = "";
+        let phonenumber = "";
         for (i = 0; i < inputlength; i++) {
-            var character = input.charAt(i);
+            let character = input.charAt(i);
 
 
             switch(character) {
@@ -98,20 +98,21 @@
                     break;
 
                 case 'a': case 'b': case 'c': phonenumber+="2";
-                    break;
+                break;
                 case 'd': case 'e': case 'f': phonenumber+="3";
-                    break;
+                break;
                 case 'g': case 'h': case 'i': phonenumber+="4";
-                    break;
+                break;
                 case 'j': case 'k': case 'l': phonenumber+="5";
-                    break;
+                break;
                 case 'm': case 'n': case 'o': phonenumber+="6";
-                    break;
-                case 'p': case 'q': case 'r': case 's': phonenumber+="7";break;
+                break;
+                case 'p': case 'q': case 'r': case 's': phonenumber+="7";
+                break;
                 case 't': case 'u': case 'v': phonenumber+="8";
-                    break;
-                case 'w': case 'x': case 'y': case 'z': phonenumber+="9"
-                    break;
+                break;
+                case 'w': case 'x': case 'y': case 'z': phonenumber+="9";
+                break;
 
                 default: phonenumber+=character;
 
@@ -127,14 +128,25 @@
     /* Write a function that returns all possible partitions of an array from left to right. With an n amount of elements in the input the returned array should have n-1 subarrays. An empty array should return an empty array.*/
 
     //did not complete
-    function isPartition(arr, filter) {
-        return arr.reduce(
-            (r, e, i, a) => {
-                r[filter(e, i, a) ? 0 : 1].push(e);
-                return r;
-            }, [[], []]);
-    }
-    console.log(isPartition([1, 5, 3, 2]));
+    // function isPartition(arr, filter) {
+    //     return arr.reduce(
+    //         (r, e, i, a) => {
+    //             r[filter(e, i, a) ? 0 : 1].push(e);
+    //             return r;
+    //         }, [[], []]);
+    // }
+    // console.log(isPartition([1, 5, 3, 2]));
+
+    function isPartition(arr){
+        let newArr = [];
+        for (let i = 1; i < arr.length; i++) {
+            let copy = arr.slice();
+            let segment = copy.splice(0, i);
+            newArr.push([segment, copy]);
+        }
+        return newArr;
+    };
+    console.log(isPartition([1, 5, 3, 2]))
 
 </script>
 </body>
